@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         arch:
-          - riscv64_riscv64
+          - riscv64
         branch:
           - riscv64_riscv64
         package:
