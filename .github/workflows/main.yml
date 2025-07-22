@@ -1,0 +1,37 @@
+name: Build Packages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.arch }}-${{ matrix.branch }}-${{ matrix.package }} build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        arch:
+          - riscv64_riscv64
+        branch:
+          - riscv64_riscv64
+        package:
+          - luci-app-clash
+          - luci-app-sms-tool
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: openwrt/gh-action-sdk@main
+        env:
+          ARCH: ${{ matrix.arch }}-${{ matrix.branch }}
+          FEEDNAME: 5G
+          PACKAGES: ${{ matrix.package }}
+          NO_REFRESH_CHECK: true
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.package }}_${{ matrix.arch }}-${{ matrix.branch }}
+          path: bin/packages/${{ matrix.arch }}/5G
