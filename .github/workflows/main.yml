@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: ${{ matrix.arch }}-${{ matrix.branch }}-${{ matrix.package }} build
+    name: ${{ matrix.arch }}_${{ matrix.branch }}-${{ matrix.package }} build
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
