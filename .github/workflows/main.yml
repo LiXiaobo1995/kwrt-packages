@@ -11,9 +11,9 @@ jobs:
       fail-fast: false
       matrix:
         arch:
-          - riscv64_riscv64
+          - riscv64
         branch:
-          - riscv64_riscv64
+          - riscv64-24.10.2
         package:
           - luci-app-clash
           - luci-app-sms-tool
