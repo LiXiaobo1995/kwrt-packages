@@ -12,10 +12,11 @@ jobs:
       matrix:
         arch:
           - riscv64_riscv64
+          - mips_24kc
         branch:
           - 24.10.2
         package:
-          - luci-app-clash
+          - luci-app-modem
           - luci-app-sms-tool
 
     steps:
